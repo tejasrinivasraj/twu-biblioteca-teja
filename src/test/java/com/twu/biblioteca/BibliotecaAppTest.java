@@ -14,6 +14,6 @@ class BibliotecaAppTest {
         System.setOut(out);
         BibliotecaApp.main(new String[]{});
 
-        verify(out).println("Welcome to Biblioteca. Your one-stop-shop for great book titles in Bangalore!");
+        verify(out).println(Constants.welcomeMessage);
     }
 }
