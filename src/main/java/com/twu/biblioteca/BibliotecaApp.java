@@ -18,8 +18,6 @@ public class BibliotecaApp {
 
     private void displayBooks() {
         List<Book> bookList = new ArrayList<>(Arrays.asList(new Book("TDD By Example"), new Book("Clean Code")));
-        for (Book book : bookList) {
-            book.displayName();
-        }
+        bookList.forEach(Book::displayName);
     }
 }
