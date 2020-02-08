@@ -1,5 +1,9 @@
 package com.twu.biblioteca;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class BibliotecaApp {
 
     public static void main(String[] args) {
@@ -13,6 +17,9 @@ public class BibliotecaApp {
     }
 
     private void displayBooks() {
-        System.out.println("TDD By Example");
+        List<Book> bookList = new ArrayList<>(Arrays.asList(new Book("TDD By Example"), new Book("Clean Code")));
+        for (Book book : bookList) {
+            book.displayName();
+        }
     }
 }
