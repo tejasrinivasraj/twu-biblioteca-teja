@@ -6,14 +6,24 @@ import java.util.List;
 
 public class BibliotecaApp {
 
-    public static void main(String[] args) {
-        new BibliotecaApp().start();
+    private ReadOperation operation;
+
+    public BibliotecaApp(ReadOperation operation) {
+
+        this.operation = operation;
     }
 
-    private void start() {
+    public static void main(String[] args) {
+        ReadOperation readOperation = new ReadOperation();
+        new BibliotecaApp(readOperation).start();
+    }
+
+    void start() {
         displayMessage();
         System.out.println(Constants.LIST_OF_BOOKS);
-        displayLibraryBooks();
+        String choice = operation.userChoice();
+        if (choice.equals("1"))
+            displayLibraryBooks();
     }
 
     private void displayMessage() {
