@@ -7,4 +7,5 @@ public interface Constants {
     String QUIT = "0. Quit";
     String CHECK_OUT = "2. Checkout";
     String CHECKOUT_SUCCESS = "Thank you! Enjoy the book";
+    String CHECKOUT_FAILED = "Sorry, that book is not available";
 }

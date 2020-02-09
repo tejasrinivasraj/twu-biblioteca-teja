@@ -60,4 +60,18 @@ class LibraryTest {
 
         verify(out).println(Constants.CHECKOUT_SUCCESS);
     }
+
+    @Test
+    void shouldNotifyOnUnSuccessfulCheckout() {
+        PrintStream out = mock(PrintStream.class);
+        System.setOut(out);
+        Book book = mock(Book.class);
+        doReturn(true).when(book).isName("TDD By Example");
+        Librarian librarian = mock(Librarian.class);
+        Library library = new Library(new ArrayList<>(Collections.singletonList(book)), librarian);
+
+        library.checkOut("TDD");
+
+        verify(out).println(Constants.CHECKOUT_FAILED);
+    }
 }
