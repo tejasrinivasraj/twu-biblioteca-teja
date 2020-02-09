@@ -24,6 +24,8 @@ public class BibliotecaApp {
         String choice = operation.userChoice();
         if (choice.equals("1"))
             displayLibraryBooks();
+        else
+            System.out.println(Constants.INVALID_MESSAGE);
     }
 
     private void displayMessage() {

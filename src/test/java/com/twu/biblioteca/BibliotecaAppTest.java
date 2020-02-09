@@ -72,4 +72,17 @@ class BibliotecaAppTest {
 
         verify(out).println("TDD By Example | Kent Beck | 2000");
     }
+
+    @Test
+    void shouldDisplayInvalidMessageIfSelectedMenuOptionIsNotValid() {
+        PrintStream out = mock(PrintStream.class);
+        System.setOut(out);
+        ReadOperation readOperation = mock(ReadOperation.class);
+        doReturn("10").when(readOperation).userChoice();
+        BibliotecaApp bibliotecaApp = new BibliotecaApp(readOperation);
+
+        bibliotecaApp.start();
+
+        verify(out).println(Constants.INVALID_MESSAGE);
+    }
 }
