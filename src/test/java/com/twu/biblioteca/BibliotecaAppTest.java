@@ -35,4 +35,13 @@ class BibliotecaAppTest {
         verify(out).println("TDD By Example | Kent Beck | 2000");
         verify(out).println("Clean Code | Robert C. Martin | 2008");
     }
+
+    @Test
+    void shouldDisplayListOfMenuOptions() {
+        PrintStream out = mock(PrintStream.class);
+        System.setOut(out);
+        BibliotecaApp.main(new String[]{});
+
+        verify(out).println(Constants.LIST_OF_BOOKS);
+    }
 }

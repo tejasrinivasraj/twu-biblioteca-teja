@@ -12,6 +12,7 @@ public class BibliotecaApp {
 
     private void start() {
         displayMessage();
+        System.out.println(Constants.LIST_OF_BOOKS);
         displayLibraryBooks();
     }
 
