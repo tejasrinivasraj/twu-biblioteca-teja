@@ -14,6 +14,7 @@ class BibliotecaAppTest {
         ReadOperation readOperation = mock(ReadOperation.class);
         doReturn("1").when(readOperation).userChoice();
         BibliotecaApp bibliotecaApp = new BibliotecaApp(readOperation);
+
         bibliotecaApp.start();
 
         verify(out).println(Constants.welcomeMessage);
@@ -26,6 +27,7 @@ class BibliotecaAppTest {
         ReadOperation readOperation = mock(ReadOperation.class);
         doReturn("1").when(readOperation).userChoice();
         BibliotecaApp bibliotecaApp = new BibliotecaApp(readOperation);
+
         bibliotecaApp.start();
 
         verify(out).println("TDD By Example | Kent Beck | 2000");
@@ -38,6 +40,7 @@ class BibliotecaAppTest {
         ReadOperation readOperation = mock(ReadOperation.class);
         doReturn("1").when(readOperation).userChoice();
         BibliotecaApp bibliotecaApp = new BibliotecaApp(readOperation);
+
         bibliotecaApp.start();
 
         verify(out).println("TDD By Example | Kent Beck | 2000");
@@ -51,6 +54,7 @@ class BibliotecaAppTest {
         ReadOperation readOperation = mock(ReadOperation.class);
         doReturn("1").when(readOperation).userChoice();
         BibliotecaApp bibliotecaApp = new BibliotecaApp(readOperation);
+
         bibliotecaApp.start();
 
         verify(out).println(Constants.LIST_OF_BOOKS);
@@ -63,6 +67,7 @@ class BibliotecaAppTest {
         ReadOperation readOperation = mock(ReadOperation.class);
         doReturn("1").when(readOperation).userChoice();
         BibliotecaApp bibliotecaApp = new BibliotecaApp(readOperation);
+
         bibliotecaApp.start();
 
         verify(out).println("TDD By Example | Kent Beck | 2000");
