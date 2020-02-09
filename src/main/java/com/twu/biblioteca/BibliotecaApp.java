@@ -20,12 +20,17 @@ public class BibliotecaApp {
 
     void start() {
         displayMessage();
-        System.out.println(Constants.LIST_OF_BOOKS);
+        displayMenu();
         String choice = operation.userChoice();
         if (choice.equals("1"))
             displayLibraryBooks();
         else
             System.out.println(Constants.INVALID_MESSAGE);
+    }
+
+    private void displayMenu() {
+        Menu menu = new Menu();
+        menu.displayOptions();
     }
 
     private void displayMessage() {
