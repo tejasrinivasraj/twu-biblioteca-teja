@@ -17,9 +17,14 @@ public class Library {
     }
 
     public void checkOut(String bookName) {
+        Book checkOutBook = null;
         for (Book book : libraryBooks) {
-            if(book.isName(bookName))
+            if(book.isName(bookName)) {
                 librarian.addToCollection(book);
+                checkOutBook = book;
+                break;
+            }
         }
+        libraryBooks.remove(checkOutBook);
     }
 }

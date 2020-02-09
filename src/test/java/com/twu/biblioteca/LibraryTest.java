@@ -11,8 +11,6 @@ import static org.mockito.Mockito.*;
 class LibraryTest {
     @Test
     void shouldDisplayInformationOfTheBooks() {
-        PrintStream out = mock(PrintStream.class);
-        System.setOut(out);
         Book book = mock(Book.class);
         Library library = new Library(new ArrayList<>(Collections.singletonList(book)), mock(Librarian.class));
 
@@ -23,8 +21,6 @@ class LibraryTest {
 
     @Test
     void shouldRequestLibrarianToAddToCollection() {
-        PrintStream out = mock(PrintStream.class);
-        System.setOut(out);
         Book book = mock(Book.class);
         doReturn(true).when(book).isName("TDD By Example");
         Librarian librarian = mock(Librarian.class);
@@ -33,5 +29,20 @@ class LibraryTest {
         library.checkOut("TDD By Example");
 
         verify(librarian, times(1)).addToCollection(book);
+    }
+
+    @Test
+    void shouldNotDisplayBookInListIfTheBookIsCheckOut() {
+        PrintStream out = mock(PrintStream.class);
+        System.setOut(out);
+        Book book = mock(Book.class);
+        doReturn(true).when(book).isName("TDD By Example");
+        Librarian librarian = mock(Librarian.class);
+        Library library = new Library(new ArrayList<>(Collections.singletonList(book)), librarian);
+
+        library.checkOut("TDD By Example");
+        library.displayBooks();
+
+        verify(book, times(0)).displayInformation();
     }
 }
