@@ -21,6 +21,6 @@ class Book {
     }
 
     public boolean isName(String bookName) {
-        return true;
+        return bookName.equals(name);
     }
 }
