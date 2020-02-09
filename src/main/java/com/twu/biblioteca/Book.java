@@ -19,4 +19,8 @@ class Book {
     void displayInformation() {
         System.out.println(name + " | " + author + " | " + year);
     }
+
+    public boolean isName(String bookName) {
+        return true;
+    }
 }
