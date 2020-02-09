@@ -7,9 +7,12 @@ import java.util.List;
 public class BibliotecaApp {
 
     public static void main(String[] args) {
-        BibliotecaApp bibliotecaApp = new BibliotecaApp();
-        bibliotecaApp.displayMessage();
-        bibliotecaApp.displayLibraryBooks();
+        new BibliotecaApp().start();
+    }
+
+    private void start() {
+        displayMessage();
+        displayLibraryBooks();
     }
 
     private void displayMessage() {
