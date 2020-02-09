@@ -20,18 +20,22 @@ public class BibliotecaApp {
 
     void start() {
         displayMessage();
-        displayMenu();
-        String choice = operation.userChoice();
-        if (choice.equals("1"))
-            displayLibraryBooks();
-        else if (choice.equals("0"))
-            quit();
-        else
-            System.out.println(Constants.INVALID_MESSAGE);
-    }
-
-    private void quit() {
-        System.exit(0);
+        boolean status = true;
+        while (status) {
+            displayMenu();
+            String choice = operation.userChoice();
+            switch (choice) {
+                case "1":
+                    displayLibraryBooks();
+                    break;
+                case "0":
+                    status = false;
+                    break;
+                default:
+                    System.out.println(Constants.INVALID_MESSAGE);
+                    break;
+            }
+        }
     }
 
     private void displayMenu() {

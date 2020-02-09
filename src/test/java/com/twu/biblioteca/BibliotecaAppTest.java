@@ -1,6 +1,5 @@
 package com.twu.biblioteca;
 
-import com.ginsberg.junit.exit.ExpectSystemExitWithStatus;
 import org.junit.jupiter.api.Test;
 
 import java.io.PrintStream;
@@ -13,7 +12,7 @@ class BibliotecaAppTest {
         PrintStream out = mock(PrintStream.class);
         System.setOut(out);
         ReadOperation readOperation = mock(ReadOperation.class);
-        doReturn("1").when(readOperation).userChoice();
+        doReturn("1","0").when(readOperation).userChoice();
         BibliotecaApp bibliotecaApp = new BibliotecaApp(readOperation);
 
         bibliotecaApp.start();
@@ -26,7 +25,7 @@ class BibliotecaAppTest {
         PrintStream out = mock(PrintStream.class);
         System.setOut(out);
         ReadOperation readOperation = mock(ReadOperation.class);
-        doReturn("1").when(readOperation).userChoice();
+        doReturn("1","0").when(readOperation).userChoice();
         BibliotecaApp bibliotecaApp = new BibliotecaApp(readOperation);
 
         bibliotecaApp.start();
@@ -39,7 +38,7 @@ class BibliotecaAppTest {
         PrintStream out = mock(PrintStream.class);
         System.setOut(out);
         ReadOperation readOperation = mock(ReadOperation.class);
-        doReturn("1").when(readOperation).userChoice();
+        doReturn("1","0").when(readOperation).userChoice();
         BibliotecaApp bibliotecaApp = new BibliotecaApp(readOperation);
 
         bibliotecaApp.start();
@@ -53,7 +52,7 @@ class BibliotecaAppTest {
         PrintStream out = mock(PrintStream.class);
         System.setOut(out);
         ReadOperation readOperation = mock(ReadOperation.class);
-        doReturn("1").when(readOperation).userChoice();
+        doReturn("0").when(readOperation).userChoice();
         BibliotecaApp bibliotecaApp = new BibliotecaApp(readOperation);
 
         bibliotecaApp.start();
@@ -66,7 +65,7 @@ class BibliotecaAppTest {
         PrintStream out = mock(PrintStream.class);
         System.setOut(out);
         ReadOperation readOperation = mock(ReadOperation.class);
-        doReturn("1").when(readOperation).userChoice();
+        doReturn("1","0").when(readOperation).userChoice();
         BibliotecaApp bibliotecaApp = new BibliotecaApp(readOperation);
 
         bibliotecaApp.start();
@@ -79,7 +78,7 @@ class BibliotecaAppTest {
         PrintStream out = mock(PrintStream.class);
         System.setOut(out);
         ReadOperation readOperation = mock(ReadOperation.class);
-        doReturn("10").when(readOperation).userChoice();
+        doReturn("10","0").when(readOperation).userChoice();
         BibliotecaApp bibliotecaApp = new BibliotecaApp(readOperation);
 
         bibliotecaApp.start();
@@ -88,7 +87,6 @@ class BibliotecaAppTest {
     }
 
     @Test
-    @ExpectSystemExitWithStatus(0)
     void shouldCloseIfSelectedMenuOptionIsQuit() {
         PrintStream out = mock(PrintStream.class);
         System.setOut(out);
@@ -97,5 +95,20 @@ class BibliotecaAppTest {
         BibliotecaApp bibliotecaApp = new BibliotecaApp(readOperation);
 
         bibliotecaApp.start();
+
+        verify(out, times(0)).println("TDD By Example | Kent Beck | 2000");
+    }
+
+    @Test
+    void shouldDisplayMenuUntilSelectedOptionIsQuit() {
+        PrintStream out = mock(PrintStream.class);
+        System.setOut(out);
+        ReadOperation readOperation = mock(ReadOperation.class);
+        doReturn("1","1", "0").when(readOperation).userChoice();
+        BibliotecaApp bibliotecaApp = new BibliotecaApp(readOperation);
+
+        bibliotecaApp.start();
+
+        verify(out, times(2)).println("TDD By Example | Kent Beck | 2000");
     }
 }
