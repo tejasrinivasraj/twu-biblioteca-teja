@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.ginsberg.junit.exit.ExpectSystemExitWithStatus;
 import org.junit.jupiter.api.Test;
 
 import java.io.PrintStream;
@@ -84,5 +85,17 @@ class BibliotecaAppTest {
         bibliotecaApp.start();
 
         verify(out).println(Constants.INVALID_MESSAGE);
+    }
+
+    @Test
+    @ExpectSystemExitWithStatus(0)
+    void shouldCloseIfSelectedMenuOptionIsQuit() {
+        PrintStream out = mock(PrintStream.class);
+        System.setOut(out);
+        ReadOperation readOperation = mock(ReadOperation.class);
+        doReturn("0").when(readOperation).userChoice();
+        BibliotecaApp bibliotecaApp = new BibliotecaApp(readOperation);
+
+        bibliotecaApp.start();
     }
 }
