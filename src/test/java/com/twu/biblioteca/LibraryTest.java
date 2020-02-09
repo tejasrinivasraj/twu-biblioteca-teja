@@ -10,7 +10,7 @@ import static org.mockito.Mockito.*;
 
 class LibraryTest {
     @Test
-    void shouldDisplayNameOfTheBooks() {
+    void shouldDisplayInformationOfTheBooks() {
         PrintStream out = mock(PrintStream.class);
         System.setOut(out);
         Book book = mock(Book.class);
@@ -18,6 +18,6 @@ class LibraryTest {
 
         library.displayBooks();
 
-        verify(book, times(1)).displayName();
+        verify(book, times(1)).displayInformation();
     }
 }

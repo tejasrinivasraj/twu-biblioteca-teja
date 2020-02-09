@@ -11,6 +11,6 @@ public class Library {
     }
 
     public void displayBooks() {
-        libraryBooks.forEach(Book::displayName);
+        libraryBooks.forEach(Book::displayInformation);
     }
 }

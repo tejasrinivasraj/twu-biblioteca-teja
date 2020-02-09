@@ -23,7 +23,7 @@ class BibliotecaAppTest {
         System.setOut(out);
         BibliotecaApp.main(new String[]{});
 
-        verify(out).println("TDD By Example");
+        verify(out).println("TDD By Example | Kent Beck | 2000");
     }
 
     @Test
@@ -32,7 +32,7 @@ class BibliotecaAppTest {
         System.setOut(out);
         BibliotecaApp.main(new String[]{});
 
-        verify(out).println("TDD By Example");
-        verify(out).println("Clean Code");
+        verify(out).println("TDD By Example | Kent Beck | 2000");
+        verify(out).println("Clean Code | Robert C. Martin | 2008");
     }
 }
