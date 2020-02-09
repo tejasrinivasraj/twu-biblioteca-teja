@@ -6,16 +6,20 @@ import java.util.List;
 
 public class BibliotecaApp {
 
+    private Library library;
     private ReadOperation operation;
 
-    public BibliotecaApp(ReadOperation operation) {
+    public BibliotecaApp(ReadOperation operation, Library library) {
 
         this.operation = operation;
+        this.library = library;
     }
 
     public static void main(String[] args) {
         ReadOperation readOperation = new ReadOperation();
-        new BibliotecaApp(readOperation).start();
+        List<Book> bookList = new ArrayList<>(Arrays.asList(new Book("TDD By Example", "Kent Beck", "2000"), new Book("Clean Code", "Robert C. Martin", "2008")));
+        Library library = new Library(bookList, new Librarian());
+        new BibliotecaApp(readOperation, library).start();
     }
 
     void start() {
@@ -27,6 +31,10 @@ public class BibliotecaApp {
             switch (choice) {
                 case "1":
                     displayLibraryBooks();
+                    break;
+                case "2":
+                    String checkOutBook = operation.bookName();
+                    library.checkOut(checkOutBook);
                     break;
                 case "0":
                     status = false;
@@ -48,9 +56,6 @@ public class BibliotecaApp {
     }
 
     private void displayLibraryBooks() {
-        List<Book> bookList = new ArrayList<>(Arrays.asList(new Book("TDD By Example", "Kent Beck", "2000"), new Book("Clean Code", "Robert C. Martin", "2008")));
-        Librarian librarian = new Librarian();
-        Library library = new Library(bookList, librarian);
         library.displayBooks();
     }
 }

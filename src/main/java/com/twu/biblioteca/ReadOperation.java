@@ -6,6 +6,10 @@ class ReadOperation {
     private Scanner scan = new Scanner(System.in);
 
     String userChoice() {
-        return scan.next();
+        return scan.nextLine();
+    }
+
+    String bookName() {
+        return scan.nextLine();
     }
 }
