@@ -29,7 +29,7 @@ public class BibliotecaApp {
     }
 
     private void displayMessage() {
-        System.out.println(Constants.welcomeMessage);
+        System.out.println(Constants.WELCOME_MESSAGE);
     }
 
     private void displayLibraryBooks() {

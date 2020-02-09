@@ -17,7 +17,7 @@ class BibliotecaAppTest {
 
         bibliotecaApp.start();
 
-        verify(out).println(Constants.welcomeMessage);
+        verify(out).println(Constants.WELCOME_MESSAGE);
     }
 
     @Test
