@@ -20,7 +20,7 @@ public class BibliotecaApp {
     }
 
     private void displayLibraryBooks() {
-        List<Book> bookList = new ArrayList<>(Arrays.asList(new Book("TDD By Example"), new Book("Clean Code")));
+        List<Book> bookList = new ArrayList<>(Arrays.asList(new Book("TDD By Example", "Kent Beck", "2000"), new Book("Clean Code", "Robert C. Martin", "2008")));
         Library library = new Library(bookList);
         library.displayBooks();
     }
