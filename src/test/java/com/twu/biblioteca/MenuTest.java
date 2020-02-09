@@ -31,4 +31,17 @@ class MenuTest {
         verify(out).println(Constants.LIST_OF_BOOKS);
         verify(out).println(Constants.QUIT);
     }
+
+    @Test
+    void shouldDisplayCheckOutOptionInMenu() {
+        PrintStream out = mock(PrintStream.class);
+        System.setOut(out);
+        Menu menu = new Menu();
+
+        menu.displayOptions();
+
+        verify(out).println(Constants.LIST_OF_BOOKS);
+        verify(out).println(Constants.QUIT);
+        verify(out).println(Constants.CHECK_OUT);
+    }
 }

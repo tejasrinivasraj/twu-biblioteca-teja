@@ -5,4 +5,5 @@ public interface Constants {
     String LIST_OF_BOOKS = "1. List of Books";
     String INVALID_MESSAGE = "Please select a valid option!";
     String QUIT = "0. Quit";
+    String CHECK_OUT = "2. Checkout";
 }
