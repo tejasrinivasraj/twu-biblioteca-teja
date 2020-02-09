@@ -23,4 +23,13 @@ class LibrarianTest {
 
         Assertions.assertEquals(new Book("TDD By Example","Kent Beck", "2000"), actualBook);
     }
+
+    @Test
+    void shouldRemoveBookInCollectionIfReturnBook() {
+        Librarian librarian = new Librarian();
+        Book book = new Book("TDD By Example","Kent Beck", "2000");
+        librarian.addToCollection(book);
+
+        librarian.returnBook("TDD By Example");
+    }
 }

@@ -12,10 +12,13 @@ class Librarian {
     }
 
     public Book returnBook(String bookName) {
+        Book returnBook = null;
         for (Book book : collection) {
-            if (book.isName(bookName))
-                return book;
+            if (book.isName(bookName)) {
+                returnBook = book;
+            }
         }
-        return null;
+        collection.remove(returnBook);
+        return returnBook;
     }
 }
