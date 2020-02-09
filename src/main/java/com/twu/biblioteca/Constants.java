@@ -6,4 +6,5 @@ public interface Constants {
     String INVALID_MESSAGE = "Please select a valid option!";
     String QUIT = "0. Quit";
     String CHECK_OUT = "2. Checkout";
+    String CHECKOUT_SUCCESS = "Thank you! Enjoy the book";
 }

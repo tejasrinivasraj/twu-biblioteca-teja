@@ -26,5 +26,6 @@ public class Library {
             }
         }
         libraryBooks.remove(checkOutBook);
+        System.out.println(Constants.CHECKOUT_SUCCESS);
     }
 }
