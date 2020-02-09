@@ -14,7 +14,7 @@ class LibraryTest {
         PrintStream out = mock(PrintStream.class);
         System.setOut(out);
         Book book = mock(Book.class);
-        Library library = new Library(new ArrayList<>(Collections.singletonList(book)));
+        Library library = new Library(new ArrayList<>(Collections.singletonList(book)), mock(Librarian.class));
 
         library.displayBooks();
 
@@ -22,15 +22,16 @@ class LibraryTest {
     }
 
     @Test
-    void shouldCheckOutTheBooks() {
+    void shouldRequestLibrarianToAddToCollection() {
         PrintStream out = mock(PrintStream.class);
         System.setOut(out);
         Book book = mock(Book.class);
+        doReturn(true).when(book).isName("TDD By Example");
         Librarian librarian = mock(Librarian.class);
-        Library library = new Library(new ArrayList<>(Collections.singletonList(book)));
+        Library library = new Library(new ArrayList<>(Collections.singletonList(book)), librarian);
 
-        library.displayBooks();
+        library.checkOut("TDD By Example");
 
-        verify(book, times(1)).displayInformation();
+        verify(librarian, times(1)).addToCollection(book);
     }
 }

@@ -4,13 +4,22 @@ import java.util.List;
 
 public class Library {
     private List<Book> libraryBooks;
+    private Librarian librarian;
 
-    public Library(List<Book> libraryBooks) {
+    public Library(List<Book> libraryBooks, Librarian librarian) {
 
         this.libraryBooks = libraryBooks;
+        this.librarian = librarian;
     }
 
     public void displayBooks() {
         libraryBooks.forEach(Book::displayInformation);
+    }
+
+    public void checkOut(String bookName) {
+        for (Book book : libraryBooks) {
+            if(book.isName(bookName))
+                librarian.addToCollection(book);
+        }
     }
 }
