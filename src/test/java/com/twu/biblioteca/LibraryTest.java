@@ -20,4 +20,17 @@ class LibraryTest {
 
         verify(book, times(1)).displayInformation();
     }
+
+    @Test
+    void shouldCheckOutTheBooks() {
+        PrintStream out = mock(PrintStream.class);
+        System.setOut(out);
+        Book book = mock(Book.class);
+        Librarian librarian = mock(Librarian.class);
+        Library library = new Library(new ArrayList<>(Collections.singletonList(book)));
+
+        library.displayBooks();
+
+        verify(book, times(1)).displayInformation();
+    }
 }
