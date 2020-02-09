@@ -74,4 +74,17 @@ class LibraryTest {
 
         verify(out).println(Constants.CHECKOUT_FAILED);
     }
+
+    @Test
+    void shouldReturnBookFromLibrarianCollectionIfReturnBook() {
+        Book book = mock(Book.class);
+        doReturn(true).when(book).isName("TDD By Example");
+        Librarian librarian = mock(Librarian.class);
+        Library library = new Library(new ArrayList<>(Collections.singletonList(book)), librarian);
+        library.checkOut("TDD By Example");
+
+        library.returnBook("TDD By Example");
+
+        verify(librarian).returnBook("TDD By Example");
+    }
 }

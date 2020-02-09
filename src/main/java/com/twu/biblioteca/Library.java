@@ -31,4 +31,8 @@ public class Library {
         else
             System.out.println(Constants.CHECKOUT_FAILED);
     }
+
+    public void returnBook(String bookName) {
+        librarian.returnBook(bookName);
+    }
 }
