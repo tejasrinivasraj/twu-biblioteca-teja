@@ -9,15 +9,16 @@ public class BibliotecaApp {
     public static void main(String[] args) {
         BibliotecaApp bibliotecaApp = new BibliotecaApp();
         bibliotecaApp.displayMessage();
-        bibliotecaApp.displayBooks();
+        bibliotecaApp.displayLibraryBooks();
     }
 
     private void displayMessage() {
         System.out.println(Constants.welcomeMessage);
     }
 
-    private void displayBooks() {
+    private void displayLibraryBooks() {
         List<Book> bookList = new ArrayList<>(Arrays.asList(new Book("TDD By Example"), new Book("Clean Code")));
-        bookList.forEach(Book::displayName);
+        Library library = new Library(bookList);
+        library.displayBooks();
     }
 }
