@@ -9,4 +9,5 @@ public interface Constants {
     String CHECKOUT_SUCCESS = "Thank you! Enjoy the book";
     String CHECKOUT_FAILED = "Sorry, that book is not available";
     String RETURN_BOOK = "3. Return";
+    String RETURN_SUCCESS = "Thank you for returning the book";
 }

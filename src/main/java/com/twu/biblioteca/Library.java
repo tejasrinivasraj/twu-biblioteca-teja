@@ -35,5 +35,6 @@ public class Library {
     public void returnBook(String bookName) {
         Book returnedBook = librarian.returnBook(bookName);
         libraryBooks.add(returnedBook);
+        System.out.println(Constants.RETURN_SUCCESS);
     }
 }
