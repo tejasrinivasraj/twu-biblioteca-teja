@@ -116,4 +116,18 @@ class LibraryTest {
 
         verify(out).println(Constants.RETURN_SUCCESS);
     }
+
+    @Test
+    void shouldNotifyOnUnSuccessfulReturn() {
+        PrintStream out = mock(PrintStream.class);
+        System.setOut(out);
+        Book book = new Book("TDD By Example","Kent Beck", "2000");
+        Librarian librarian = new Librarian();
+        Library library = new Library(new ArrayList<>(Collections.singletonList(book)), librarian);
+        library.checkOut("TDD By Example");
+
+        library.returnBook("TDD without Example");
+
+        verify(out).println(Constants.RETURN_FAILED);
+    }
 }
