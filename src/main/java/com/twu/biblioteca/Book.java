@@ -14,10 +14,6 @@ class Book {
         this.year = year;
     }
 
-    void displayName() {
-        System.out.println(name);
-    }
-
     void displayInformation() {
         System.out.println(name + " | " + author + " | " + year);
     }
