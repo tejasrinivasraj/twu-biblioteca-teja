@@ -44,14 +44,14 @@ public class BibliotecaApp {
                     status = false;
                     break;
                 default:
-                    System.out.println(Constants.INVALID_MESSAGE);
+                    operation.display(Constants.INVALID_MESSAGE);
                     break;
             }
         }
     }
 
     private void displayMenu() {
-        Menu menu = new Menu();
+        Menu menu = new Menu(operation);
         menu.displayOptions();
     }
 

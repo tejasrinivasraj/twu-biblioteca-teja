@@ -1,61 +1,53 @@
 package com.twu.biblioteca;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import java.io.PrintStream;
 
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
 class MenuTest {
 
+    private ReadWriteOperation operation;
+
+    @BeforeEach
+    void setup() {
+        operation = mock(ReadWriteOperation.class);
+    }
+
     @Test
     void shouldDisplayOneOptionInMenuIfThereIsOnlyOne() {
-        PrintStream out = mock(PrintStream.class);
-        System.setOut(out);
-        Menu menu = new Menu();
+        Menu menu = new Menu(operation);
 
         menu.displayOptions();
 
-        verify(out).println(Constants.LIST_OF_BOOKS);
+        verify(operation).display(Constants.LIST_OF_BOOKS);
     }
 
     @Test
     void shouldDisplayMultipleOptionInMenuIfThereAreMoreThanOne() {
-        PrintStream out = mock(PrintStream.class);
-        System.setOut(out);
-        Menu menu = new Menu();
+        Menu menu = new Menu(operation);
 
         menu.displayOptions();
 
-        verify(out).println(Constants.LIST_OF_BOOKS);
-        verify(out).println(Constants.QUIT);
+        verify(operation).display(Constants.QUIT);
     }
 
     @Test
     void shouldDisplayCheckOutOptionInMenu() {
-        PrintStream out = mock(PrintStream.class);
-        System.setOut(out);
-        Menu menu = new Menu();
+        Menu menu = new Menu(operation);
 
         menu.displayOptions();
 
-        verify(out).println(Constants.LIST_OF_BOOKS);
-        verify(out).println(Constants.QUIT);
-        verify(out).println(Constants.CHECK_OUT);
+        verify(operation).display(Constants.CHECK_OUT);
     }
 
     @Test
     void shouldDisplayReturnOptionInMenu() {
-        PrintStream out = mock(PrintStream.class);
-        System.setOut(out);
-        Menu menu = new Menu();
+        Menu menu = new Menu(operation);
 
         menu.displayOptions();
 
-        verify(out).println(Constants.LIST_OF_BOOKS);
-        verify(out).println(Constants.QUIT);
-        verify(out).println(Constants.CHECK_OUT);
-        verify(out).println(Constants.RETURN_BOOK);
+        verify(operation).display(Constants.RETURN_BOOK);
     }
 }

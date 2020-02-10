@@ -7,10 +7,16 @@ import java.util.List;
 class Menu {
 
     private List<String> options = new ArrayList<>(Arrays.asList(Constants.LIST_OF_BOOKS, Constants.CHECK_OUT, Constants.RETURN_BOOK, Constants.QUIT));
+    private ReadWriteOperation operation;
+
+    public Menu(ReadWriteOperation operation) {
+
+        this.operation = operation;
+    }
 
     void displayOptions() {
         for (String option : options) {
-            System.out.println(option);
+            operation.display(option);
         }
     }
 }
