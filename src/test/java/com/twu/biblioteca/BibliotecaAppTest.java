@@ -132,4 +132,19 @@ class BibliotecaAppTest {
 
         verify(library, times(1)).checkOut("TDD By Example");
     }
+
+    @Test
+    void shouldReturnBookToLibraryIfSelectedOptionIsReturn() {
+        PrintStream out = mock(PrintStream.class);
+        System.setOut(out);
+        ReadOperation readOperation = mock(ReadOperation.class);
+        doReturn("2", "3", "0").when(readOperation).userChoice();
+        doReturn("TDD By Example", "TDD By Example").when(readOperation).bookName();
+        library = mock(Library.class);
+        BibliotecaApp bibliotecaApp = new BibliotecaApp(readOperation, library);
+
+        bibliotecaApp.start();
+
+        verify(library, times(1)).returnBook("TDD By Example");
+    }
 }

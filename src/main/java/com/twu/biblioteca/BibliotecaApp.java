@@ -36,6 +36,10 @@ public class BibliotecaApp {
                     String checkOutBook = operation.bookName();
                     library.checkOut(checkOutBook);
                     break;
+                case "3":
+                    String returnBook = operation.bookName();
+                    library.returnBook(returnBook);
+                    break;
                 case "0":
                     status = false;
                     break;
