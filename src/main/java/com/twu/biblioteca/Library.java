@@ -5,15 +5,17 @@ import java.util.List;
 public class Library {
     private List<Book> libraryBooks;
     private Librarian librarian;
+    private ReadWriteOperation writeOperation;
 
-    public Library(List<Book> libraryBooks, Librarian librarian) {
+    public Library(List<Book> libraryBooks, Librarian librarian, ReadWriteOperation writeOperation) {
 
         this.libraryBooks = libraryBooks;
         this.librarian = librarian;
+        this.writeOperation = writeOperation;
     }
 
     public void displayBooks() {
-        libraryBooks.forEach(Book::displayInformation);
+        libraryBooks.forEach(book -> writeOperation.display(book.returnInformation()));
     }
 
     public void checkOut(String bookName) {
@@ -27,18 +29,18 @@ public class Library {
         }
         libraryBooks.remove(checkOutBook);
         if (checkOutBook != null)
-            System.out.println(Constants.CHECKOUT_SUCCESS);
+            writeOperation.display(Constants.CHECKOUT_SUCCESS);
         else
-            System.out.println(Constants.CHECKOUT_FAILED);
+            writeOperation.display(Constants.CHECKOUT_FAILED);
     }
 
     public void returnBook(String bookName) {
         Book returnedBook = librarian.returnBook(bookName);
         if (returnedBook != null) {
             libraryBooks.add(returnedBook);
-            System.out.println(Constants.RETURN_SUCCESS);
+            writeOperation.display(Constants.RETURN_SUCCESS);
         }
         else
-            System.out.println(Constants.RETURN_FAILED);
+            writeOperation.display(Constants.RETURN_FAILED);
     }
 }

@@ -12,27 +12,25 @@ import static org.mockito.Mockito.*;
 class BibliotecaAppTest {
 
     private List<Book> bookList = new ArrayList<>(Arrays.asList(new Book("TDD By Example", "Kent Beck", "2000"), new Book("Clean Code", "Robert C. Martin", "2008")));
-    private Library library = new Library(bookList, new Librarian());
+    private Library library = new Library(bookList, new Librarian(), new ReadWriteOperation());
     @Test
     void shouldDisplayWelcomeMessageUponStart() {
-        PrintStream out = mock(PrintStream.class);
-        System.setOut(out);
-        ReadOperation readOperation = mock(ReadOperation.class);
-        doReturn("1","0").when(readOperation).userChoice();
-        BibliotecaApp bibliotecaApp = new BibliotecaApp(readOperation, library);
+        ReadWriteOperation operation = mock(ReadWriteOperation.class);
+        doReturn("0").when(operation).userChoice();
+        BibliotecaApp bibliotecaApp = new BibliotecaApp(operation, library);
 
         bibliotecaApp.start();
 
-        verify(out).println(Constants.WELCOME_MESSAGE);
+        verify(operation).display(Constants.WELCOME_MESSAGE);
     }
 
     @Test
     void shouldDisplayOneBooksIfThereIsOnlyOneBook() {
         PrintStream out = mock(PrintStream.class);
         System.setOut(out);
-        ReadOperation readOperation = mock(ReadOperation.class);
-        doReturn("1","0").when(readOperation).userChoice();
-        BibliotecaApp bibliotecaApp = new BibliotecaApp(readOperation, library);
+        ReadWriteOperation operation = mock(ReadWriteOperation.class);
+        doReturn("1","0").when(operation).userChoice();
+        BibliotecaApp bibliotecaApp = new BibliotecaApp(operation, library);
 
         bibliotecaApp.start();
 
@@ -43,9 +41,9 @@ class BibliotecaAppTest {
     void shouldDisplayListOfAllBooksIfThereAreMultipleBooks() {
         PrintStream out = mock(PrintStream.class);
         System.setOut(out);
-        ReadOperation readOperation = mock(ReadOperation.class);
-        doReturn("1","0").when(readOperation).userChoice();
-        BibliotecaApp bibliotecaApp = new BibliotecaApp(readOperation, library);
+        ReadWriteOperation operation = mock(ReadWriteOperation.class);
+        doReturn("1","0").when(operation).userChoice();
+        BibliotecaApp bibliotecaApp = new BibliotecaApp(operation, library);
 
         bibliotecaApp.start();
 
@@ -57,9 +55,9 @@ class BibliotecaAppTest {
     void shouldDisplayListOfMenuOptions() {
         PrintStream out = mock(PrintStream.class);
         System.setOut(out);
-        ReadOperation readOperation = mock(ReadOperation.class);
-        doReturn("0").when(readOperation).userChoice();
-        BibliotecaApp bibliotecaApp = new BibliotecaApp(readOperation, library);
+        ReadWriteOperation operation = mock(ReadWriteOperation.class);
+        doReturn("0").when(operation).userChoice();
+        BibliotecaApp bibliotecaApp = new BibliotecaApp(operation, library);
 
         bibliotecaApp.start();
 
@@ -70,9 +68,9 @@ class BibliotecaAppTest {
     void shouldDisplayListOfBooksIfSelectedMenuOptionIs1() {
         PrintStream out = mock(PrintStream.class);
         System.setOut(out);
-        ReadOperation readOperation = mock(ReadOperation.class);
-        doReturn("1","0").when(readOperation).userChoice();
-        BibliotecaApp bibliotecaApp = new BibliotecaApp(readOperation, library);
+        ReadWriteOperation operation = mock(ReadWriteOperation.class);
+        doReturn("1","0").when(operation).userChoice();
+        BibliotecaApp bibliotecaApp = new BibliotecaApp(operation, library);
 
         bibliotecaApp.start();
 
@@ -83,9 +81,9 @@ class BibliotecaAppTest {
     void shouldDisplayInvalidMessageIfSelectedMenuOptionIsNotValid() {
         PrintStream out = mock(PrintStream.class);
         System.setOut(out);
-        ReadOperation readOperation = mock(ReadOperation.class);
-        doReturn("10","0").when(readOperation).userChoice();
-        BibliotecaApp bibliotecaApp = new BibliotecaApp(readOperation, library);
+        ReadWriteOperation operation = mock(ReadWriteOperation.class);
+        doReturn("10","0").when(operation).userChoice();
+        BibliotecaApp bibliotecaApp = new BibliotecaApp(operation, library);
 
         bibliotecaApp.start();
 
@@ -96,9 +94,9 @@ class BibliotecaAppTest {
     void shouldCloseIfSelectedMenuOptionIsQuit() {
         PrintStream out = mock(PrintStream.class);
         System.setOut(out);
-        ReadOperation readOperation = mock(ReadOperation.class);
-        doReturn("0").when(readOperation).userChoice();
-        BibliotecaApp bibliotecaApp = new BibliotecaApp(readOperation, library);
+        ReadWriteOperation operation = mock(ReadWriteOperation.class);
+        doReturn("0").when(operation).userChoice();
+        BibliotecaApp bibliotecaApp = new BibliotecaApp(operation, library);
 
         bibliotecaApp.start();
 
@@ -109,9 +107,9 @@ class BibliotecaAppTest {
     void shouldDisplayMenuUntilSelectedOptionIsQuit() {
         PrintStream out = mock(PrintStream.class);
         System.setOut(out);
-        ReadOperation readOperation = mock(ReadOperation.class);
-        doReturn("1","1", "0").when(readOperation).userChoice();
-        BibliotecaApp bibliotecaApp = new BibliotecaApp(readOperation, library);
+        ReadWriteOperation operation = mock(ReadWriteOperation.class);
+        doReturn("1","1", "0").when(operation).userChoice();
+        BibliotecaApp bibliotecaApp = new BibliotecaApp(operation, library);
 
         bibliotecaApp.start();
 
@@ -122,11 +120,11 @@ class BibliotecaAppTest {
     void shouldCheckOutBookFromLibraryIfSelectedOptionIsCheckOut() {
         PrintStream out = mock(PrintStream.class);
         System.setOut(out);
-        ReadOperation readOperation = mock(ReadOperation.class);
-        doReturn("1","2", "0").when(readOperation).userChoice();
-        doReturn("TDD By Example").when(readOperation).bookName();
+        ReadWriteOperation operation = mock(ReadWriteOperation.class);
+        doReturn("1","2", "0").when(operation).userChoice();
+        doReturn("TDD By Example").when(operation).bookName();
         library = mock(Library.class);
-        BibliotecaApp bibliotecaApp = new BibliotecaApp(readOperation, library);
+        BibliotecaApp bibliotecaApp = new BibliotecaApp(operation, library);
 
         bibliotecaApp.start();
 
@@ -137,11 +135,11 @@ class BibliotecaAppTest {
     void shouldReturnBookToLibraryIfSelectedOptionIsReturn() {
         PrintStream out = mock(PrintStream.class);
         System.setOut(out);
-        ReadOperation readOperation = mock(ReadOperation.class);
-        doReturn("2", "3", "0").when(readOperation).userChoice();
-        doReturn("TDD By Example", "TDD By Example").when(readOperation).bookName();
+        ReadWriteOperation operation = mock(ReadWriteOperation.class);
+        doReturn("2", "3", "0").when(operation).userChoice();
+        doReturn("TDD By Example", "TDD By Example").when(operation).bookName();
         library = mock(Library.class);
-        BibliotecaApp bibliotecaApp = new BibliotecaApp(readOperation, library);
+        BibliotecaApp bibliotecaApp = new BibliotecaApp(operation, library);
 
         bibliotecaApp.start();
 

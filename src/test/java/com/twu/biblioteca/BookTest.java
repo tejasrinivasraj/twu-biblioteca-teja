@@ -2,24 +2,17 @@ package com.twu.biblioteca;
 
 import org.junit.jupiter.api.Test;
 
-import java.io.PrintStream;
-
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
+import static org.junit.jupiter.api.Assertions.*;
 
 class BookTest {
 
     @Test
-    void shouldDisplayInformation() {
-        PrintStream out = mock(PrintStream.class);
-        System.setOut(out);
+    void shouldReturnInformation() {
         Book book = new Book("TDD by Example", "Kent Beck", "1980");
 
-        book.displayInformation();
+        String actualInformation = book.returnInformation();
 
-        verify(out).println("TDD by Example | Kent Beck | 1980");
+        assertEquals("TDD by Example | Kent Beck | 1980", actualInformation);
     }
 
     @Test

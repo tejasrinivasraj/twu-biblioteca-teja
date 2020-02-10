@@ -7,19 +7,19 @@ import java.util.List;
 public class BibliotecaApp {
 
     private Library library;
-    private ReadOperation operation;
+    private ReadWriteOperation operation;
 
-    public BibliotecaApp(ReadOperation operation, Library library) {
+    public BibliotecaApp(ReadWriteOperation operation, Library library) {
 
         this.operation = operation;
         this.library = library;
     }
 
     public static void main(String[] args) {
-        ReadOperation readOperation = new ReadOperation();
+        ReadWriteOperation operation = new ReadWriteOperation();
         List<Book> bookList = new ArrayList<>(Arrays.asList(new Book("TDD By Example", "Kent Beck", "2000"), new Book("Clean Code", "Robert C. Martin", "2008")));
-        Library library = new Library(bookList, new Librarian());
-        new BibliotecaApp(readOperation, library).start();
+        Library library = new Library(bookList, new Librarian(), new ReadWriteOperation());
+        new BibliotecaApp(operation, library).start();
     }
 
     void start() {
@@ -56,7 +56,7 @@ public class BibliotecaApp {
     }
 
     private void displayMessage() {
-        System.out.println(Constants.WELCOME_MESSAGE);
+        operation.display(Constants.WELCOME_MESSAGE);
     }
 
     private void displayLibraryBooks() {

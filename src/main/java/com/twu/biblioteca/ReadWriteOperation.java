@@ -2,7 +2,7 @@ package com.twu.biblioteca;
 
 import java.util.Scanner;
 
-class ReadOperation {
+class ReadWriteOperation {
     private Scanner scan = new Scanner(System.in);
 
     String userChoice() {
@@ -11,5 +11,9 @@ class ReadOperation {
 
     String bookName() {
         return scan.nextLine();
+    }
+
+    void display(String message) {
+        System.out.println(message);
     }
 }

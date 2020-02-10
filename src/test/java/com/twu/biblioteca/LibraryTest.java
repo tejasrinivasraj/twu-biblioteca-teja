@@ -9,14 +9,16 @@ import java.util.Collections;
 import static org.mockito.Mockito.*;
 
 class LibraryTest {
+
+    private ReadWriteOperation writeOperation = new ReadWriteOperation();
     @Test
     void shouldDisplayInformationOfTheBooks() {
         Book book = mock(Book.class);
-        Library library = new Library(new ArrayList<>(Collections.singletonList(book)), mock(Librarian.class));
+        Library library = new Library(new ArrayList<>(Collections.singletonList(book)), mock(Librarian.class), writeOperation);
 
         library.displayBooks();
 
-        verify(book, times(1)).displayInformation();
+        verify(book, times(1)).returnInformation();
     }
 
     @Test
@@ -24,7 +26,7 @@ class LibraryTest {
         Book book = mock(Book.class);
         doReturn(true).when(book).isName("TDD By Example");
         Librarian librarian = mock(Librarian.class);
-        Library library = new Library(new ArrayList<>(Collections.singletonList(book)), librarian);
+        Library library = new Library(new ArrayList<>(Collections.singletonList(book)), librarian, writeOperation);
 
         library.checkOut("TDD By Example");
 
@@ -38,12 +40,12 @@ class LibraryTest {
         Book book = mock(Book.class);
         doReturn(true).when(book).isName("TDD By Example");
         Librarian librarian = mock(Librarian.class);
-        Library library = new Library(new ArrayList<>(Collections.singletonList(book)), librarian);
+        Library library = new Library(new ArrayList<>(Collections.singletonList(book)), librarian, writeOperation);
 
         library.checkOut("TDD By Example");
         library.displayBooks();
 
-        verify(book, times(0)).displayInformation();
+        verify(book, times(0)).returnInformation();
     }
 
     @Test
@@ -53,7 +55,7 @@ class LibraryTest {
         Book book = mock(Book.class);
         doReturn(true).when(book).isName("TDD By Example");
         Librarian librarian = mock(Librarian.class);
-        Library library = new Library(new ArrayList<>(Collections.singletonList(book)), librarian);
+        Library library = new Library(new ArrayList<>(Collections.singletonList(book)), librarian, writeOperation);
 
         library.checkOut("TDD By Example");
         library.displayBooks();
@@ -68,7 +70,7 @@ class LibraryTest {
         Book book = mock(Book.class);
         doReturn(true).when(book).isName("TDD By Example");
         Librarian librarian = mock(Librarian.class);
-        Library library = new Library(new ArrayList<>(Collections.singletonList(book)), librarian);
+        Library library = new Library(new ArrayList<>(Collections.singletonList(book)), librarian, writeOperation);
 
         library.checkOut("TDD");
 
@@ -80,7 +82,7 @@ class LibraryTest {
         Book book = mock(Book.class);
         doReturn(true).when(book).isName("TDD By Example");
         Librarian librarian = mock(Librarian.class);
-        Library library = new Library(new ArrayList<>(Collections.singletonList(book)), librarian);
+        Library library = new Library(new ArrayList<>(Collections.singletonList(book)), librarian, writeOperation);
         library.checkOut("TDD By Example");
 
         library.returnBook("TDD By Example");
@@ -94,7 +96,7 @@ class LibraryTest {
         System.setOut(out);
         Book book = new Book("TDD By Example","Kent Beck", "2000");
         Librarian librarian = new Librarian();
-        Library library = new Library(new ArrayList<>(Collections.singletonList(book)), librarian);
+        Library library = new Library(new ArrayList<>(Collections.singletonList(book)), librarian, writeOperation);
         library.checkOut("TDD By Example");
 
         library.returnBook("TDD By Example");
@@ -109,7 +111,7 @@ class LibraryTest {
         System.setOut(out);
         Book book = new Book("TDD By Example","Kent Beck", "2000");
         Librarian librarian = new Librarian();
-        Library library = new Library(new ArrayList<>(Collections.singletonList(book)), librarian);
+        Library library = new Library(new ArrayList<>(Collections.singletonList(book)), librarian, writeOperation);
         library.checkOut("TDD By Example");
 
         library.returnBook("TDD By Example");
@@ -123,7 +125,7 @@ class LibraryTest {
         System.setOut(out);
         Book book = new Book("TDD By Example","Kent Beck", "2000");
         Librarian librarian = new Librarian();
-        Library library = new Library(new ArrayList<>(Collections.singletonList(book)), librarian);
+        Library library = new Library(new ArrayList<>(Collections.singletonList(book)), librarian, writeOperation);
         library.checkOut("TDD By Example");
 
         library.returnBook("TDD without Example");
