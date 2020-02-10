@@ -87,4 +87,19 @@ class LibraryTest {
 
         verify(librarian).returnBook("TDD By Example");
     }
+
+    @Test
+    void shouldDisplayBookInListIfReturnBook() {
+        PrintStream out = mock(PrintStream.class);
+        System.setOut(out);
+        Book book = new Book("TDD By Example","Kent Beck", "2000");
+        Librarian librarian = new Librarian();
+        Library library = new Library(new ArrayList<>(Collections.singletonList(book)), librarian);
+        library.checkOut("TDD By Example");
+
+        library.returnBook("TDD By Example");
+        library.displayBooks();
+
+        verify(out).println("TDD By Example | Kent Beck | 2000");
+    }
 }

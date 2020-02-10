@@ -33,6 +33,7 @@ public class Library {
     }
 
     public void returnBook(String bookName) {
-        librarian.returnBook(bookName);
+        Book returnedBook = librarian.returnBook(bookName);
+        libraryBooks.add(returnedBook);
     }
 }
