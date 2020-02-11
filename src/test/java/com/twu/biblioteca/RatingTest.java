@@ -76,4 +76,13 @@ class RatingTest {
 
         assertEquals("7", display);
     }
+
+    @Test
+    void shouldReturn8IfRatingIsEight() {
+        Rating rating = Rating.EIGHT;
+
+        String display = rating.display();
+
+        assertEquals("8", display);
+    }
 }
