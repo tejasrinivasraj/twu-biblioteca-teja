@@ -18,7 +18,8 @@ public class BibliotecaApp {
     public static void main(String[] args) {
         ReadWriteOperation operation = new ReadWriteOperation();
         List<Book> bookList = new ArrayList<>(Arrays.asList(new Book("TDD By Example", "Kent Beck", "2000"), new Book("Clean Code", "Robert C. Martin", "2008")));
-        Library library = new Library(bookList, new Librarian(), new ReadWriteOperation());
+        List<Movie> movieList = new ArrayList<>(Arrays.asList(new Movie("Harry Potter 1", "2001", "Chris Columbus", Rating.UNRATED), new Movie("Harry Potter 2", "2003", "Chris Columbus", Rating.TEN)));
+        Library library = new Library(bookList, movieList, new Librarian(), new ReadWriteOperation());
         new BibliotecaApp(operation, library).start();
     }
 
@@ -39,6 +40,9 @@ public class BibliotecaApp {
                 case "3":
                     String returnBook = operation.bookName();
                     library.returnBook(returnBook);
+                    break;
+                case "4":
+                    library.displayMovies();
                     break;
                 case "0":
                     status = false;

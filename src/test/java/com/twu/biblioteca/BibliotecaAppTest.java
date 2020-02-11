@@ -18,7 +18,8 @@ class BibliotecaAppTest {
     void setup() {
         operation = mock(ReadWriteOperation.class);
         List<Book> bookList = new ArrayList<>(Arrays.asList(new Book("TDD By Example", "Kent Beck", "2000"), new Book("Clean Code", "Robert C. Martin", "2008")));
-        library = new Library(bookList, new Librarian(), operation);
+        List<Movie> movieList = new ArrayList<>(Arrays.asList(new Movie("Harry Potter 1", "2001", "Chris Columbus", Rating.UNRATED), new Movie("Harry Potter 2", "2003", "Chris Columbus", Rating.TEN)));
+        library = new Library(bookList, movieList, new Librarian(), operation);
     }
 
     @Test
@@ -124,5 +125,15 @@ class BibliotecaAppTest {
         bibliotecaApp.start();
 
         verify(library, times(1)).returnBook("TDD By Example");
+    }
+
+    @Test
+    void shouldDisplayListOfMoviesIfSelectedMenuOptionIs4() {
+        doReturn("4", "0").when(operation).userChoice();
+        BibliotecaApp bibliotecaApp = new BibliotecaApp(operation, library);
+
+        bibliotecaApp.start();
+
+        verify(operation).display("Harry Potter 1 | 2001 | Chris Columbus | Unrated");
     }
 }
