@@ -49,4 +49,13 @@ class RatingTest {
 
         assertEquals("4", display);
     }
+
+    @Test
+    void shouldReturn5IfRatingIsFive() {
+        Rating rating = Rating.FIVE;
+
+        String display = rating.display();
+
+        assertEquals("5", display);
+    }
 }
