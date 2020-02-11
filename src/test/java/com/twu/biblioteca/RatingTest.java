@@ -94,4 +94,13 @@ class RatingTest {
 
         assertEquals("9", display);
     }
+
+    @Test
+    void shouldReturn10IfRatingIsTen() {
+        Rating rating = Rating.TEN;
+
+        String display = rating.display();
+
+        assertEquals("10", display);
+    }
 }
