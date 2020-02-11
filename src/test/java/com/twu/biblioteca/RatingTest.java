@@ -22,4 +22,13 @@ class RatingTest {
 
         assertEquals("1", display);
     }
+
+    @Test
+    void shouldReturn2IfRatingIsTwo() {
+        Rating rating = Rating.TWO;
+
+        String display = rating.display();
+
+        assertEquals("2", display);
+    }
 }

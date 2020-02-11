@@ -1,7 +1,7 @@
 package com.twu.biblioteca;
 
 public enum Rating {
-    UNRATED("Unrated"), ONE("1");
+    UNRATED("Unrated"), ONE("1"), TWO("2");
 
     private String rating;
 
