@@ -40,4 +40,13 @@ class RatingTest {
 
         assertEquals("3", display);
     }
+
+    @Test
+    void shouldReturn4IfRatingIsFour() {
+        Rating rating = Rating.FOUR;
+
+        String display = rating.display();
+
+        assertEquals("4", display);
+    }
 }
