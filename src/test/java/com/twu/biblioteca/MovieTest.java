@@ -1,0 +1,16 @@
+package com.twu.biblioteca;
+
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class MovieTest {
+    @Test
+    void shouldReturnInformation() {
+        Movie movie = new Movie("Harry Potter 1", "2001", "Chris Columbus", Rating.UNRATED);
+
+        String actualInformation = movie.returnInformation();
+
+        assertEquals("Harry Potter 1 | 2001 | Chris Columbus | Unrated", actualInformation);
+    }
+}
