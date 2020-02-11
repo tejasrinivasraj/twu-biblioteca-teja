@@ -13,4 +13,13 @@ class RatingTest {
 
         assertEquals("Unrated", display);
     }
+
+    @Test
+    void shouldReturn1IfRatingIsOne() {
+        Rating rating = Rating.ONE;
+
+        String display = rating.display();
+
+        assertEquals("1", display);
+    }
 }
