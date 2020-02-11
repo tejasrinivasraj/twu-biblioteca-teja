@@ -31,4 +31,13 @@ class RatingTest {
 
         assertEquals("2", display);
     }
+
+    @Test
+    void shouldReturn3IfRatingIsThree() {
+        Rating rating = Rating.THREE;
+
+        String display = rating.display();
+
+        assertEquals("3", display);
+    }
 }
