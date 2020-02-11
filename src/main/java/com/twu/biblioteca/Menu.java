@@ -6,7 +6,7 @@ import java.util.List;
 
 class Menu {
 
-    private List<String> options = new ArrayList<>(Arrays.asList(Constants.LIST_OF_BOOKS, Constants.CHECK_OUT, Constants.RETURN_BOOK, Constants.QUIT));
+    private List<String> options = new ArrayList<>(Arrays.asList(Constants.LIST_OF_BOOKS, Constants.CHECK_OUT, Constants.RETURN_BOOK, Constants.LIST_OF_MOVIES, Constants.QUIT));
     private ReadWriteOperation operation;
 
     public Menu(ReadWriteOperation operation) {

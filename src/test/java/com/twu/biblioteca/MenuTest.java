@@ -50,4 +50,13 @@ class MenuTest {
 
         verify(operation).display(Constants.RETURN_BOOK);
     }
+
+    @Test
+    void shouldDisplayDisplayListOfMoviesOptionInMenu() {
+        Menu menu = new Menu(operation);
+
+        menu.displayOptions();
+
+        verify(operation).display(Constants.LIST_OF_MOVIES);
+    }
 }
