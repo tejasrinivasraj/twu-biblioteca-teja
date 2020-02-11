@@ -4,12 +4,14 @@ import java.util.List;
 
 public class Library {
     private List<Book> libraryBooks;
+    private List<Movie> libraryMovies;
     private Librarian librarian;
     private ReadWriteOperation writeOperation;
 
-    public Library(List<Book> libraryBooks, Librarian librarian, ReadWriteOperation writeOperation) {
+    public Library(List<Book> libraryBooks, List<Movie> libraryMovies, Librarian librarian, ReadWriteOperation writeOperation) {
 
         this.libraryBooks = libraryBooks;
+        this.libraryMovies = libraryMovies;
         this.librarian = librarian;
         this.writeOperation = writeOperation;
     }
@@ -42,5 +44,9 @@ public class Library {
         }
         else
             writeOperation.display(Constants.RETURN_FAILED);
+    }
+
+    public void displayMovies() {
+        libraryMovies.forEach(movie -> writeOperation.display(movie.returnInformation()));
     }
 }
