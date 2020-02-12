@@ -170,4 +170,14 @@ class LibraryTest {
 
         verify(writeOperation).display(Constants.CHECK_OUT_MOVIE_SUCCESS);
     }
+
+    @Test
+    void shouldNotifyOnUnSuccessfulMovieCheckout() {
+        Movie movie = new Movie("Harry Potter 1", "2001", "Chris Columbus", Rating.UNRATED);
+        Library library = new Library(new ArrayList<>(Collections.singletonList(mock(Book.class))), new ArrayList<>(Collections.singletonList(movie)), mock(Librarian.class), writeOperation, new ArrayList<>());
+
+        library.checkOutMovie("Harry 1");
+
+        verify(writeOperation).display(Constants.CHECK_OUT_MOVIE_FAILED);
+    }
 }

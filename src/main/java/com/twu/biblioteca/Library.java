@@ -50,11 +50,13 @@ public class Library {
     }
 
     public void checkOutMovie(String movieName) {
+        AtomicBoolean success = new AtomicBoolean(false);
         libraryMovies.stream().filter(movie -> movie.isName(movieName)).findFirst().ifPresent(movie -> {
             libraryMovies.remove(movie);
             checkedOutMovies.add(movie);
+            success.set(true);
         });
-        writeOperation.display(Constants.CHECK_OUT_MOVIE_SUCCESS);
+        writeOperation.display(success.get() ? Constants.CHECK_OUT_MOVIE_SUCCESS : Constants.CHECK_OUT_MOVIE_FAILED);
     }
 
     public void returnMovie(String movieName) {
