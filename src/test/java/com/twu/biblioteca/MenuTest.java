@@ -59,4 +59,13 @@ class MenuTest {
 
         verify(operation).display(Constants.LIST_OF_MOVIES);
     }
+
+    @Test
+    void shouldDisplayCheckOutMovieOptionInMenu() {
+        Menu menu = new Menu(operation);
+
+        menu.displayOptions();
+
+        verify(operation).display(Constants.CHECK_OUT_MOVIE);
+    }
 }
