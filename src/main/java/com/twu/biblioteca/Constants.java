@@ -5,13 +5,13 @@ public interface Constants {
     String LIST_OF_BOOKS = "1. List of Books";
     String INVALID_MESSAGE = "Please select a valid option!";
     String QUIT = "0. Quit";
-    String CHECK_OUT = "2. Checkout";
+    String CHECK_OUT = "3. Checkout";
     String CHECKOUT_SUCCESS = "Thank you! Enjoy the book";
     String CHECKOUT_FAILED = "Sorry, that book is not available";
-    String RETURN_BOOK = "3. Return";
+    String RETURN_BOOK = "4. Return";
     String RETURN_SUCCESS = "Thank you for returning the book";
     String RETURN_FAILED = "That is not a valid book to return.";
-    String LIST_OF_MOVIES = "4. List of Movies";
+    String LIST_OF_MOVIES = "2. List of Movies";
     String CHECK_OUT_MOVIE = "5. Checkout Movie";
     String RETURN_MOVIE = "6. Return Movie";
     String CHECK_OUT_MOVIE_SUCCESS = "Thank you! Enjoy the movie";

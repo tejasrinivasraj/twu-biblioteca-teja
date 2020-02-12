@@ -25,7 +25,7 @@ public class BibliotecaApp {
 
     void start() {
         displayMessage();
-        HashMap<String, Choice> menu = new HashMap<>(Map.of("1", new ListBooks(), "2", new CheckoutBook(), "3", new ReturnBook(), "4", new ListMovies(), "5", new CheckoutMovie(), "6", new ReturnMovie(), "0", new Quit()));
+        HashMap<String, Choice> menu = new HashMap<>(Map.of("1", new ListBooks(), "2", new ListMovies(), "3", new CheckoutBook(), "4", new ReturnBook(), "5", new CheckoutMovie(), "6", new ReturnMovie(), "0", new Quit()));
         boolean status = true;
         while (status) {
             displayMenu();
@@ -41,7 +41,7 @@ public class BibliotecaApp {
 
     private void displayMenu() {
         Menu menu = new Menu(operation);
-        menu.displayOptions();
+        menu.defaultOptions();
     }
 
     private void displayMessage() {

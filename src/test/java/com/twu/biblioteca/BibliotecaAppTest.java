@@ -105,7 +105,7 @@ class BibliotecaAppTest {
 
     @Test
     void shouldCheckOutBookFromLibraryIfSelectedOptionIsCheckOut() {
-        doReturn("1", "2", "0").when(operation).userChoice();
+        doReturn("1", "3", "0").when(operation).userChoice();
         doReturn("TDD By Example").when(operation).userItemName();
         library = mock(Library.class);
         BibliotecaApp bibliotecaApp = new BibliotecaApp(operation, library);
@@ -117,7 +117,7 @@ class BibliotecaAppTest {
 
     @Test
     void shouldReturnBookToLibraryIfSelectedOptionIsReturn() {
-        doReturn("2", "3", "0").when(operation).userChoice();
+        doReturn("3", "4", "0").when(operation).userChoice();
         doReturn("TDD By Example", "TDD By Example").when(operation).userItemName();
         library = mock(Library.class);
         BibliotecaApp bibliotecaApp = new BibliotecaApp(operation, library);
@@ -129,7 +129,7 @@ class BibliotecaAppTest {
 
     @Test
     void shouldDisplayListOfMoviesIfSelectedMenuOptionIs4() {
-        doReturn("4", "0").when(operation).userChoice();
+        doReturn("2", "0").when(operation).userChoice();
         BibliotecaApp bibliotecaApp = new BibliotecaApp(operation, library);
 
         bibliotecaApp.start();
