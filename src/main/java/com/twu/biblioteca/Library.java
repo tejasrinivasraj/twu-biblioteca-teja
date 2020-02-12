@@ -21,19 +21,15 @@ public class Library {
     }
 
     public void checkOut(String bookName) {
-        Book checkOutBook = null;
         for (Book book : libraryBooks) {
             if(book.isName(bookName)) {
                 librarian.addToCollection(book);
-                checkOutBook = book;
-                break;
+                libraryBooks.remove(book);
+                writeOperation.display(Constants.CHECKOUT_SUCCESS);
+                return;
             }
         }
-        libraryBooks.remove(checkOutBook);
-        if (checkOutBook != null)
-            writeOperation.display(Constants.CHECKOUT_SUCCESS);
-        else
-            writeOperation.display(Constants.CHECKOUT_FAILED);
+        writeOperation.display(Constants.CHECKOUT_FAILED);
     }
 
     public void returnBook(String bookName) {
