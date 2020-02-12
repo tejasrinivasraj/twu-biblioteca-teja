@@ -3,8 +3,7 @@ package com.twu.biblioteca;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 class MenuTest {
 
@@ -76,5 +75,17 @@ class MenuTest {
         menu.displayOptions();
 
         verify(operation).display(Constants.RETURN_MOVIE);
+    }
+
+    @Test
+    void shouldNotDisplayCheckOutOptionInDefaultMenu() {
+        Menu menu = new Menu(operation);
+
+        menu.defaultOptions();
+
+        verify(operation).display(Constants.LIST_OF_BOOKS);
+        verify(operation).display(Constants.LIST_OF_MOVIES);
+        verify(operation).display(Constants.QUIT);
+        verify(operation, times(0)).display(Constants.CHECK_OUT);
     }
 }

@@ -19,4 +19,10 @@ class Menu {
             operation.display(option);
         }
     }
+
+    void defaultOptions() {
+        operation.display(Constants.LIST_OF_BOOKS);
+        operation.display(Constants.LIST_OF_MOVIES);
+        operation.display(Constants.QUIT);
+    }
 }
