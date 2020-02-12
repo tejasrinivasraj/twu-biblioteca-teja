@@ -136,4 +136,16 @@ class BibliotecaAppTest {
 
         verify(operation).display("Harry Potter 1 | 2001 | Chris Columbus | Unrated");
     }
+
+    @Test
+    void shouldCheckOutMovieFromLibraryIfSelectedOptionsIsCheckOutMovie() {
+        doReturn("5", "0").when(operation).userChoice();
+        doReturn("Harry Potter 1").when(operation).bookName();
+        library = mock(Library.class);
+        BibliotecaApp bibliotecaApp = new BibliotecaApp(operation, library);
+
+        bibliotecaApp.start();
+
+        verify(library).checkOutMovie("Harry Potter 1");
+    }
 }

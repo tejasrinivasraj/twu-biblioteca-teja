@@ -44,6 +44,9 @@ public class BibliotecaApp {
                 case "4":
                     library.displayMovies();
                     break;
+                case "5":
+                    String checkOutMovie = operation.bookName();
+                    library.checkOutMovie(checkOutMovie);
                 case "0":
                     status = false;
                     break;
