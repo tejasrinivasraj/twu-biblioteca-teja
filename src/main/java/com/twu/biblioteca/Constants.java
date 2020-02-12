@@ -17,4 +17,5 @@ public interface Constants {
     String CHECK_OUT_MOVIE_SUCCESS = "Thank you! Enjoy the movie";
     String CHECK_OUT_MOVIE_FAILED = "Sorry, that movie is not available";
     String RETURN_MOVIE_SUCCESS = "Thank you for returning the movie";
+    String RETURN_MOVIE_FAILED = "That is not a valid book to movie.";
 }
