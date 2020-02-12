@@ -23,6 +23,7 @@ class Menu {
     void defaultOptions() {
         operation.display(Constants.LIST_OF_BOOKS);
         operation.display(Constants.LIST_OF_MOVIES);
+        operation.display(Constants.LOGIN);
         operation.display(Constants.QUIT);
     }
 }

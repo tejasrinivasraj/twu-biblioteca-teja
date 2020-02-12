@@ -88,4 +88,13 @@ class MenuTest {
         verify(operation).display(Constants.QUIT);
         verify(operation, times(0)).display(Constants.CHECK_OUT);
     }
+
+    @Test
+    void shouldDisplayLoginOptionInDefaultMenu() {
+        Menu menu = new Menu(operation);
+
+        menu.defaultOptions();
+
+        verify(operation).display(Constants.LOGIN);
+    }
 }
