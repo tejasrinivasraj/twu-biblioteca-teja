@@ -47,6 +47,7 @@ public class BibliotecaApp {
                 case "5":
                     String checkOutMovie = operation.userItemName();
                     library.checkOutMovie(checkOutMovie);
+                    break;
                 case "0":
                     status = false;
                     break;
