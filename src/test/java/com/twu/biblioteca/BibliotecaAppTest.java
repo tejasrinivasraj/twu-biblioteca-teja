@@ -19,7 +19,7 @@ class BibliotecaAppTest {
         operation = mock(ReadWriteOperation.class);
         List<Book> bookList = new ArrayList<>(Arrays.asList(new Book("TDD By Example", "Kent Beck", "2000"), new Book("Clean Code", "Robert C. Martin", "2008")));
         List<Movie> movieList = new ArrayList<>(Arrays.asList(new Movie("Harry Potter 1", "2001", "Chris Columbus", Rating.UNRATED), new Movie("Harry Potter 2", "2003", "Chris Columbus", Rating.TEN)));
-        library = new Library(bookList, movieList, new Librarian(), operation);
+        library = new Library(bookList, movieList, new Librarian(), operation, new ArrayList<>());
     }
 
     @Test

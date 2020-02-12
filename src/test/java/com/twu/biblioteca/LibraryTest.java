@@ -20,7 +20,7 @@ class LibraryTest {
     @Test
     void shouldDisplayInformationOfTheBooks() {
         Book book = mock(Book.class);
-        Library library = new Library(new ArrayList<>(Collections.singletonList(book)), new ArrayList<>(), mock(Librarian.class), writeOperation);
+        Library library = new Library(new ArrayList<>(Collections.singletonList(book)), new ArrayList<>(), mock(Librarian.class), writeOperation, new ArrayList<>());
 
         library.displayBooks();
 
@@ -32,7 +32,7 @@ class LibraryTest {
         Book book = mock(Book.class);
         doReturn(true).when(book).isName("TDD By Example");
         Librarian librarian = mock(Librarian.class);
-        Library library = new Library(new ArrayList<>(Collections.singletonList(book)), new ArrayList<>(), librarian, writeOperation);
+        Library library = new Library(new ArrayList<>(Collections.singletonList(book)), new ArrayList<>(), librarian, writeOperation, new ArrayList<>());
 
         library.checkOut("TDD By Example");
 
@@ -44,7 +44,7 @@ class LibraryTest {
         Book book = mock(Book.class);
         doReturn(true).when(book).isName("TDD By Example");
         Librarian librarian = mock(Librarian.class);
-        Library library = new Library(new ArrayList<>(Collections.singletonList(book)), new ArrayList<>(), librarian, writeOperation);
+        Library library = new Library(new ArrayList<>(Collections.singletonList(book)), new ArrayList<>(), librarian, writeOperation, new ArrayList<>());
 
         library.checkOut("TDD By Example");
         library.displayBooks();
@@ -57,7 +57,7 @@ class LibraryTest {
         Book book = mock(Book.class);
         doReturn(true).when(book).isName("TDD By Example");
         Librarian librarian = mock(Librarian.class);
-        Library library = new Library(new ArrayList<>(Collections.singletonList(book)), new ArrayList<>(), librarian, writeOperation);
+        Library library = new Library(new ArrayList<>(Collections.singletonList(book)), new ArrayList<>(), librarian, writeOperation, new ArrayList<>());
 
         library.checkOut("TDD By Example");
         library.displayBooks();
@@ -70,7 +70,7 @@ class LibraryTest {
         Book book = mock(Book.class);
         doReturn(true).when(book).isName("TDD By Example");
         Librarian librarian = mock(Librarian.class);
-        Library library = new Library(new ArrayList<>(Collections.singletonList(book)), new ArrayList<>(), librarian, writeOperation);
+        Library library = new Library(new ArrayList<>(Collections.singletonList(book)), new ArrayList<>(), librarian, writeOperation, new ArrayList<>());
 
         library.checkOut("TDD");
 
@@ -82,7 +82,7 @@ class LibraryTest {
         Book book = mock(Book.class);
         doReturn(true).when(book).isName("TDD By Example");
         Librarian librarian = mock(Librarian.class);
-        Library library = new Library(new ArrayList<>(Collections.singletonList(book)), new ArrayList<>(), librarian, writeOperation);
+        Library library = new Library(new ArrayList<>(Collections.singletonList(book)), new ArrayList<>(), librarian, writeOperation, new ArrayList<>());
         library.checkOut("TDD By Example");
 
         library.returnBook("TDD By Example");
@@ -94,7 +94,7 @@ class LibraryTest {
     void shouldDisplayBookInListIfReturnBook() {
         Book book = new Book("TDD By Example","Kent Beck", "2000");
         Librarian librarian = new Librarian();
-        Library library = new Library(new ArrayList<>(Collections.singletonList(book)), new ArrayList<>(), librarian, writeOperation);
+        Library library = new Library(new ArrayList<>(Collections.singletonList(book)), new ArrayList<>(), librarian, writeOperation, new ArrayList<>());
         library.checkOut("TDD By Example");
 
         library.returnBook("TDD By Example");
@@ -107,7 +107,7 @@ class LibraryTest {
     void shouldNotifyOnSuccessfulReturn() {
         Book book = new Book("TDD By Example","Kent Beck", "2000");
         Librarian librarian = new Librarian();
-        Library library = new Library(new ArrayList<>(Collections.singletonList(book)), new ArrayList<>(), librarian, writeOperation);
+        Library library = new Library(new ArrayList<>(Collections.singletonList(book)), new ArrayList<>(), librarian, writeOperation, new ArrayList<>());
         library.checkOut("TDD By Example");
 
         library.returnBook("TDD By Example");
@@ -119,7 +119,7 @@ class LibraryTest {
     void shouldNotifyOnUnSuccessfulReturn() {
         Book book = new Book("TDD By Example","Kent Beck", "2000");
         Librarian librarian = new Librarian();
-        Library library = new Library(new ArrayList<>(Collections.singletonList(book)), new ArrayList<>(), librarian, writeOperation);
+        Library library = new Library(new ArrayList<>(Collections.singletonList(book)), new ArrayList<>(), librarian, writeOperation, new ArrayList<>());
         library.checkOut("TDD By Example");
 
         library.returnBook("TDD without Example");
@@ -130,7 +130,7 @@ class LibraryTest {
     @Test
     void shouldDisplayInformationOfTheMovies() {
         Movie movie = mock(Movie.class);
-        Library library = new Library(new ArrayList<>(Collections.singletonList(mock(Book.class))), new ArrayList<>(Collections.singletonList(movie)), mock(Librarian.class), writeOperation);
+        Library library = new Library(new ArrayList<>(Collections.singletonList(mock(Book.class))), new ArrayList<>(Collections.singletonList(movie)), mock(Librarian.class), writeOperation, new ArrayList<>());
 
         library.displayMovies();
 
@@ -140,12 +140,24 @@ class LibraryTest {
     @Test
     void shouldNotDisplayMovieInListIfTheMovieIsCheckOut() {
         Movie movie = new Movie("Harry Potter 1", "2001", "Chris Columbus", Rating.UNRATED);
-        Library library = new Library(new ArrayList<>(Collections.singletonList(mock(Book.class))), new ArrayList<>(Collections.singletonList(movie)), mock(Librarian.class), writeOperation);
+        Library library = new Library(new ArrayList<>(Collections.singletonList(mock(Book.class))), new ArrayList<>(Collections.singletonList(movie)), mock(Librarian.class), writeOperation, new ArrayList<>());
 
 
         library.checkOutMovie("Harry Potter 1");
         library.displayMovies();
 
         verify(writeOperation, times(0)).display(movie.returnInformation());
+    }
+
+    @Test
+    void shouldDisplayMovieInListIfReturnMovie() {
+        Movie movie = new Movie("Harry Potter 1", "2001", "Chris Columbus", Rating.UNRATED);
+        Library library = new Library(new ArrayList<>(Collections.singletonList(mock(Book.class))), new ArrayList<>(Collections.singletonList(movie)), mock(Librarian.class), writeOperation, new ArrayList<>());
+        library.checkOutMovie("Harry Potter 1");
+
+        library.returnMovie("Harry Potter 1");
+        library.displayMovies();
+
+        verify(writeOperation, times(1)).display(movie.returnInformation());
     }
 }

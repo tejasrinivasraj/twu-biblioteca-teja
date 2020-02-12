@@ -7,13 +7,15 @@ public class Library {
     private List<Movie> libraryMovies;
     private Librarian librarian;
     private ReadWriteOperation writeOperation;
+    private List<Movie> checkedOutMovies;
 
-    public Library(List<Book> libraryBooks, List<Movie> libraryMovies, Librarian librarian, ReadWriteOperation writeOperation) {
+    public Library(List<Book> libraryBooks, List<Movie> libraryMovies, Librarian librarian, ReadWriteOperation writeOperation, List<Movie> checkedOutMovies) {
 
         this.libraryBooks = libraryBooks;
         this.libraryMovies = libraryMovies;
         this.librarian = librarian;
         this.writeOperation = writeOperation;
+        this.checkedOutMovies = checkedOutMovies;
     }
 
     public void displayBooks() {
@@ -47,6 +49,17 @@ public class Library {
     }
 
     public void checkOutMovie(String movieName) {
-        libraryMovies.stream().filter(movie -> movie.isName(movieName)).findFirst().ifPresent(movie -> libraryMovies.remove(movie));
+        libraryMovies.stream().filter(movie -> movie.isName(movieName)).findFirst().ifPresent(movie -> {
+            libraryMovies.remove(movie);
+            checkedOutMovies.add(movie);
+        });
+
+    }
+
+    public void returnMovie(String movieName) {
+        checkedOutMovies.stream().filter(movie -> movie.isName(movieName)).findFirst().ifPresent(movie -> {
+            libraryMovies.add(movie);
+            checkedOutMovies.remove(movie);
+        });
     }
 }
