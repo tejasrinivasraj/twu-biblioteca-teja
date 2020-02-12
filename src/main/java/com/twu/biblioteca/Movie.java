@@ -19,6 +19,6 @@ public class Movie {
     }
 
     public boolean isName(String name) {
-        return true;
+        return name.equals(this.name);
     }
 }

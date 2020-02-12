@@ -20,4 +20,11 @@ class MovieTest {
 
         assertTrue(movie.isName("Harry Potter 1"));
     }
+
+    @Test
+    void shouldReturnFalseIfMovieNameIsDifferent() {
+        Movie movie = new Movie("Harry Potter 1", "2001", "Chris Columbus", Rating.UNRATED);
+
+        assertFalse(movie.isName("Harry Potter 2"));
+    }
 }
