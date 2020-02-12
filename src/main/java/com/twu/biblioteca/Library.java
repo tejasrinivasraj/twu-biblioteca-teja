@@ -51,11 +51,6 @@ public class Library {
     }
 
     public void checkOutMovie(String movieName) {
-        for (Movie movie : libraryMovies) {
-            if (movie.isName(movieName)) {
-                libraryMovies.remove(movie);
-                return;
-            }
-        }
+        libraryMovies.stream().filter(movie -> movie.isName(movieName)).findFirst().ifPresent(movie -> libraryMovies.remove(movie));
     }
 }
