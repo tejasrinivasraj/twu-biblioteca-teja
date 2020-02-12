@@ -48,6 +48,10 @@ public class BibliotecaApp {
                     String checkOutMovie = operation.userItemName();
                     library.checkOutMovie(checkOutMovie);
                     break;
+                case "6":
+                    String returnMovie = operation.userItemName();
+                    library.returnMovie(returnMovie);
+                    break;
                 case "0":
                     status = false;
                     break;

@@ -148,4 +148,16 @@ class BibliotecaAppTest {
 
         verify(library).checkOutMovie("Harry Potter 1");
     }
+
+    @Test
+    void shouldReturnMovieToLibraryIfSelectedOptionsIsReturnMovie() {
+        doReturn("6", "0").when(operation).userChoice();
+        doReturn("Harry Potter 1").when(operation).userItemName();
+        library = mock(Library.class);
+        BibliotecaApp bibliotecaApp = new BibliotecaApp(operation, library);
+
+        bibliotecaApp.start();
+
+        verify(library).returnMovie("Harry Potter 1");
+    }
 }
