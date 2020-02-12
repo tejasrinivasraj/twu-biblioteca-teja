@@ -13,4 +13,5 @@ public interface Constants {
     String RETURN_FAILED = "That is not a valid book to return.";
     String LIST_OF_MOVIES = "4. List of Movies";
     String CHECK_OUT_MOVIE = "5. Checkout Movie";
+    String RETURN_MOVIE = "6. Return Movie";
 }

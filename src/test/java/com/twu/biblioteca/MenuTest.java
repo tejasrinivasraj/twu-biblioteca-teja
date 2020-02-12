@@ -68,4 +68,13 @@ class MenuTest {
 
         verify(operation).display(Constants.CHECK_OUT_MOVIE);
     }
+
+    @Test
+    void shouldDisplayReturnMovieOptionInMenu() {
+        Menu menu = new Menu(operation);
+
+        menu.displayOptions();
+
+        verify(operation).display(Constants.RETURN_MOVIE);
+    }
 }
