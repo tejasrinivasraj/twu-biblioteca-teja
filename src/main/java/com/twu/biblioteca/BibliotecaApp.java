@@ -34,18 +34,18 @@ public class BibliotecaApp {
                     displayLibraryBooks();
                     break;
                 case "2":
-                    String checkOutBook = operation.bookName();
+                    String checkOutBook = operation.userItemName();
                     library.checkOut(checkOutBook);
                     break;
                 case "3":
-                    String returnBook = operation.bookName();
+                    String returnBook = operation.userItemName();
                     library.returnBook(returnBook);
                     break;
                 case "4":
                     library.displayMovies();
                     break;
                 case "5":
-                    String checkOutMovie = operation.bookName();
+                    String checkOutMovie = operation.userItemName();
                     library.checkOutMovie(checkOutMovie);
                 case "0":
                     status = false;

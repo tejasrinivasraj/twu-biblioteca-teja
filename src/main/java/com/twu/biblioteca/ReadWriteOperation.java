@@ -9,7 +9,7 @@ class ReadWriteOperation {
         return scan.nextLine();
     }
 
-    String bookName() {
+    String userItemName() {
         return scan.nextLine();
     }
 
