@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Library {
     private List<Book> libraryBooks;
@@ -53,7 +54,7 @@ public class Library {
             libraryMovies.remove(movie);
             checkedOutMovies.add(movie);
         });
-
+        writeOperation.display(Constants.CHECK_OUT_MOVIE_SUCCESS);
     }
 
     public void returnMovie(String movieName) {

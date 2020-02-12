@@ -14,4 +14,5 @@ public interface Constants {
     String LIST_OF_MOVIES = "4. List of Movies";
     String CHECK_OUT_MOVIE = "5. Checkout Movie";
     String RETURN_MOVIE = "6. Return Movie";
+    String CHECK_OUT_MOVIE_SUCCESS = "Thank you! Enjoy the movie";
 }
