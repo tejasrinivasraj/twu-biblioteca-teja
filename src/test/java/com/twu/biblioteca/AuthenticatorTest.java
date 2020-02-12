@@ -14,4 +14,11 @@ class AuthenticatorTest {
 
         assertTrue(authenticator.isAuthorized("014-0199", "authorized"));
     }
+
+    @Test
+    void shouldReturnFalseIfUserNameAndPasswordWontMatches() {
+        Authenticator authenticator = new Authenticator(new HashMap<>(Map.of("014-0199","authorized")));
+
+        assertFalse(authenticator.isAuthorized("014-0190", "authorized"));
+    }
 }

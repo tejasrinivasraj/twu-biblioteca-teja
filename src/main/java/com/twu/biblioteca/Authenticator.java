@@ -11,6 +11,6 @@ public class Authenticator {
     }
 
     public boolean isAuthorized(String username, String password) {
-        return true;
+        return credentials.containsKey(username) && credentials.get(username).equals(password);
     }
 }
