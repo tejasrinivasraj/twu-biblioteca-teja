@@ -136,4 +136,16 @@ class LibraryTest {
 
         verify(writeOperation, times(1)).display(movie.returnInformation());
     }
+
+    @Test
+    void shouldNotDisplayMovieInListIfTheMovieIsCheckOut() {
+        Movie movie = new Movie("Harry Potter 1", "2001", "Chris Columbus", Rating.UNRATED);
+        Library library = new Library(new ArrayList<>(Collections.singletonList(mock(Book.class))), new ArrayList<>(Collections.singletonList(movie)), mock(Librarian.class), writeOperation);
+
+
+        library.checkOutMovie("Harry Potter 1");
+        library.displayMovies();
+
+        verify(writeOperation, times(0)).display(movie.returnInformation());
+    }
 }

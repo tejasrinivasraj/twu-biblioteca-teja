@@ -49,4 +49,13 @@ public class Library {
     public void displayMovies() {
         libraryMovies.forEach(movie -> writeOperation.display(movie.returnInformation()));
     }
+
+    public void checkOutMovie(String movieName) {
+        for (Movie movie : libraryMovies) {
+            if (movie.isName(movieName)) {
+                libraryMovies.remove(movie);
+                return;
+            }
+        }
+    }
 }
