@@ -64,5 +64,6 @@ public class Library {
             libraryMovies.add(movie);
             checkedOutMovies.remove(movie);
         });
+        writeOperation.display(Constants.RETURN_MOVIE_SUCCESS);
     }
 }
