@@ -17,4 +17,8 @@ public class Movie {
     public String returnInformation() {
         return name + " | " + year + " | " + director + " | " + rating.display();
     }
+
+    public boolean isName(String name) {
+        return true;
+    }
 }
