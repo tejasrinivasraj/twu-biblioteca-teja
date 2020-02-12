@@ -1,8 +1,8 @@
 package com.twu.biblioteca;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import com.twu.biblioteca.Exception.QuitMenuException;
+
+import java.util.*;
 
 public class BibliotecaApp {
 
@@ -25,39 +25,16 @@ public class BibliotecaApp {
 
     void start() {
         displayMessage();
+        HashMap<String, Choice> menu = new HashMap<>(Map.of("1", new ListBooks(), "2", new CheckoutBook(), "3", new ReturnBook(), "4", new ListMovies(), "5", new CheckoutMovie(), "6", new ReturnMovie(), "0", new Quit()));
         boolean status = true;
         while (status) {
             displayMenu();
             String choice = operation.userChoice();
-            switch (choice) {
-                case "1":
-                    displayLibraryBooks();
-                    break;
-                case "2":
-                    String checkOutBook = operation.userItemName();
-                    library.checkOut(checkOutBook);
-                    break;
-                case "3":
-                    String returnBook = operation.userItemName();
-                    library.returnBook(returnBook);
-                    break;
-                case "4":
-                    library.displayMovies();
-                    break;
-                case "5":
-                    String checkOutMovie = operation.userItemName();
-                    library.checkOutMovie(checkOutMovie);
-                    break;
-                case "6":
-                    String returnMovie = operation.userItemName();
-                    library.returnMovie(returnMovie);
-                    break;
-                case "0":
-                    status = false;
-                    break;
-                default:
-                    operation.display(Constants.INVALID_MESSAGE);
-                    break;
+            Choice userChoice = menu.containsKey(choice) ? menu.get(choice) : new Invalid();
+            try {
+                userChoice.perform(library, operation);
+            } catch (QuitMenuException e) {
+                status = false;
             }
         }
     }
@@ -69,9 +46,5 @@ public class BibliotecaApp {
 
     private void displayMessage() {
         operation.display(Constants.WELCOME_MESSAGE);
-    }
-
-    private void displayLibraryBooks() {
-        library.displayBooks();
     }
 }
